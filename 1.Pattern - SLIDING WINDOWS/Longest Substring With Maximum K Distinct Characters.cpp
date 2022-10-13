@@ -7,24 +7,19 @@ Leetcode Link: https://leetcode.com/problems/longest-substring-with-at-most-k-di
 using namespace std;
 
 int longestSubstring(string s, int k) {
+    unordered_map<char, int> freq;
     int left = 0;
-    int ans = INT32_MIN;
-    int count = 1;
-    for(int i = 1; i < s.size(); i ++) {
-        
-        if(s[i-1] != s[i])
-            count ++;
-
-        if(count > k) {
-            ans =  max(ans,i-left);
-            do {
-                left ++;
-            }while(s[left] == s[left+1]);
-            count--;
+    int ans = INT_MIN;
+    for(int  i = 0; i < s.size()-1; i ++) {
+        freq[s[i]]++;
+        while(freq.size() > k) {
+            freq[s[left]]--;
+            if(freq[s[left]]==0)
+                freq.erase(s[left]);
+            left ++;
         }
-            
+        ans = max(ans,i-left+1);
     }
-
     return ans;
 }
 
