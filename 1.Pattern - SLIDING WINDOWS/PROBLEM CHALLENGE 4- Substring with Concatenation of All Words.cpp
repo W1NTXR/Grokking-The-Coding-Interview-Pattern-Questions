@@ -5,29 +5,33 @@ Leetcode link: https://leetcode.com/problems/substring-with-concatenation-of-all
 #include<bits/stdc++.h>
 using namespace std;
 
-vector<int> findSubstring(string s, vector<string> words){
-    if(s.size() < words.size()*words[0].size()) return {};
-    int k = words[0].size();
-    int left = 0;
-    unordered_map<string, int> freq,freq1;
-    for(auto i: words) {
-        freq[i]++;
-    }
-    vector<int> ans;
-    unordered_map<string, int> temp(freq);
-    for(int i = 0; i < s.size(); i += k) {
-        string x = s.substr(i,k);
-        temp[x]--;
-        if(temp[x] == 0) temp.erase(x);
-        if(temp.empty()) ans.push_back(left);
-        if(temp[x] < 0) {
-            left=i;
-            temp=freq;
-            temp[x]--;
-            if(temp[x] < 0) temp.erase(x);
+bool check(string s, unordered_map<string, int> y, int k) {
+    for(int i = 0; i < s.size(); i +=k) {
+        string l = s.substr(i,k);
+        if(y.find(l) != y.end()) {
+            if(--y[l] == -1) return false;
         }
+        else return false;
     }
 
+    return true;
+}
+
+vector<int> findSubstring(string s, vector<string> words){
+    if(s.size() < words.size()*words[0].size()) return {};
+    vector<int> ans;
+    int k=words[0].size();
+    int n=words.size();
+    unordered_map<string, int> freq;
+    for(auto i: words) freq[i]++;
+    int i = 0;
+    while(i + n*k <= s.size()){
+        if(check(s.substr(i,n*k),freq,k)) {
+            ans.push_back(i);
+
+        }
+        i++;
+    }
     return ans;
 }
 
