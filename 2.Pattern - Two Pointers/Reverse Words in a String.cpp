@@ -17,11 +17,13 @@ string reverseWords(string s){
 		i = j+1;
 	}
 	return result;
+
 }
+
 
 int main(){
 	string s;
-	cin >> s;
+	getline(cin,s);
 	cout << reverseWords(s);
 
 	return 0;
