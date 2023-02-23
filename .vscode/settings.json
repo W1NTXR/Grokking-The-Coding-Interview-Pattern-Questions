@@ -4,6 +4,8 @@
         "unordered_map": "cpp",
         "unordered_set": "cpp",
         "bitset": "cpp",
-        "algorithm": "cpp"
+        "algorithm": "cpp",
+        "iostream": "cpp",
+        "new": "cpp"
     }
 }
