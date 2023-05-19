@@ -6,6 +6,11 @@
         "bitset": "cpp",
         "algorithm": "cpp",
         "iostream": "cpp",
-        "new": "cpp"
+        "new": "cpp",
+        "array": "cpp",
+        "string": "cpp",
+        "string_view": "cpp",
+        "ranges": "cpp",
+        "span": "cpp"
     }
 }

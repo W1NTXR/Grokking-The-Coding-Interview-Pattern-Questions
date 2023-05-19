@@ -52,7 +52,12 @@ struct LL{
         }
     }
 };
-
+//similar to reverse normally
+//nex = head->next;
+//head->next=pre
+//pre=head
+//head=next
+//just in ths case 
 node* revInRange(node* head, int l, int r){
     node* cur=head;
     node* pre=NULL;

@@ -1,3 +1,10 @@
+// consider the ll 1->2->3->4->NULL
+// we have to reverse it 4->3->2->1->NULL
+//so we will use 2 pointers next and pre both will be NULL initially
+//so then we will just pick the node next to head and store it in next
+//point the head towards prev node
+//then we will just move the prev node forward to head
+//and head node further ahead to next
 #include<bits/stdc++.h>
 using namespace std;
 
@@ -65,7 +72,8 @@ int main() {
         cin >> t;
         x.pb(t);
     }
-    disp(revList(x.head));
+    x.head = revList(x.head);
+    x.disp();
 
     return 0;
 }
